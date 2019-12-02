@@ -2,18 +2,12 @@ use std::convert::TryInto;
 
 #[aoc_generator(day1)]
 pub fn generate_input(input: &str) -> Vec<u32> {
-    input
-        .lines()
-        .map(|l| l.parse::<u32>().unwrap())
-        .collect()
+    input.lines().map(|l| l.parse::<u32>().unwrap()).collect()
 }
 
 #[aoc(day1, part1)]
 pub fn solve_1(input: &[u32]) -> u32 {
-    input
-        .iter()
-        .map(|i| (i / 3) - 2)
-        .sum()
+    input.iter().map(|i| (i / 3) - 2).sum()
 }
 
 fn get_fuel_by_mass(mass: u32) -> u32 {
@@ -40,8 +34,5 @@ fn get_total_fuel_for_module(mass: u32) -> u32 {
 
 #[aoc(day1, part2)]
 pub fn solve_2(input: &[u32]) -> u32 {
-    input
-        .iter()
-        .map(|i| get_total_fuel_for_module(*i))
-        .sum()
+    input.iter().map(|i| get_total_fuel_for_module(*i)).sum()
 }
