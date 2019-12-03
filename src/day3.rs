@@ -107,28 +107,69 @@ pub fn solve_1(input: &(Wire, Wire)) -> u32 {
     current_record
 }
 
+#[aoc(day3, part2)]
+pub fn solve_2(input: &(Wire, Wire)) -> u32 {
+    let (wire1, wire2) = input;
+    let mut current_record = std::usize::MAX;
+
+    for (d1, p1) in wire1.0.iter().enumerate() {
+        for (d2, p2) in wire2.0.iter().enumerate() {
+            if p1 == p2 {
+                let res = (d1 + d2) + 2;
+                if res < current_record {
+                    current_record = res;
+                }
+            }
+        }
+    }
+    current_record.try_into().unwrap()
+}
+
 mod tests {
     #[allow(unused_imports)]
     use super::*;
 
+    #[allow(dead_code)]
+    const EXAMPLE_1: &str = "R8,U5,L5,D3\nU7,R6,D4,L4";
+    #[allow(dead_code)]
+    const EXAMPLE_2: &str = "R75,D30,R83,U83,L12,D49,R71,U7,L72\nU62,R66,U55,R34,D71,R55,D58,R83";
+    #[allow(dead_code)]
+    const EXAMPLE_3: &str =
+        "R98,U47,R26,D63,R33,U87,L62,D20,R33,U53,R51\nU98,R91,D20,R16,D67,R40,U7,R15,U6,R7";
+
     #[test]
     fn it_solves_part_1_example_1() {
-        let wires = generate_input("R8,U5,L5,D3\nU7,R6,D4,L4");
+        let wires = generate_input(EXAMPLE_1);
         assert_eq!(solve_1(&wires), 6);
     }
 
     #[test]
     fn it_solves_part_1_example_2() {
-        let wires =
-            generate_input("R75,D30,R83,U83,L12,D49,R71,U7,L72\nU62,R66,U55,R34,D71,R55,D58,R83");
+        let wires = generate_input(EXAMPLE_2);
         assert_eq!(solve_1(&wires), 159);
     }
 
     #[test]
     fn it_solves_part_1_example_3() {
-        let wires = generate_input(
-            "R98,U47,R26,D63,R33,U87,L62,D20,R33,U53,R51\nU98,R91,D20,R16,D67,R40,U7,R15,U6,R7",
-        );
+        let wires = generate_input(EXAMPLE_3);
         assert_eq!(solve_1(&wires), 135);
+    }
+
+    #[test]
+    fn it_solves_part_2_example_1() {
+        let wires = generate_input(EXAMPLE_1);
+        assert_eq!(solve_2(&wires), 30);
+    }
+
+    #[test]
+    fn it_solves_part_2_example_2() {
+        let wires = generate_input(EXAMPLE_2);
+        assert_eq!(solve_2(&wires), 610);
+    }
+
+    #[test]
+    fn it_solves_part_2_example_3() {
+        let wires = generate_input(EXAMPLE_3);
+        assert_eq!(solve_2(&wires), 410);
     }
 }
