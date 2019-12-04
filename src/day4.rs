@@ -93,10 +93,6 @@ fn matches_criteria_2(input: &str) -> bool {
         }
     }
 
-    if has_seen_pair_without_additional {
-        println!("Considering {} a match", input);
-    }
-
     has_seen_pair_without_additional
 }
 
