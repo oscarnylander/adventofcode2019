@@ -2,10 +2,7 @@ use crate::intcode::execute;
 
 #[aoc_generator(day2)]
 pub fn generate_input(input: &str) -> Vec<i32> {
-    input
-        .split(',')
-        .map(|n| n.parse::<_>().unwrap())
-        .collect()
+    input.split(',').map(|n| n.parse::<_>().unwrap()).collect()
 }
 
 fn set_verb_and_noun(input: &mut Vec<i32>, verb: i32, noun: i32) {

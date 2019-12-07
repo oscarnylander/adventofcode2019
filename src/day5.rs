@@ -2,10 +2,7 @@ use crate::intcode::execute;
 
 #[aoc_generator(day5)]
 pub fn generate_input(input: &str) -> Vec<i32> {
-    input
-        .split(',')
-        .map(|n| n.parse::<_>().unwrap())
-        .collect()
+    input.split(',').map(|n| n.parse::<_>().unwrap()).collect()
 }
 
 #[aoc(day5, part1)]
@@ -22,9 +19,9 @@ pub fn solve_2(input: &[i32]) -> i32 {
 
 mod tests {
     #[allow(unused_imports)]
-    use crate::intcode::execute;
-    #[allow(unused_imports)]
     use super::generate_input;
+    #[allow(unused_imports)]
+    use crate::intcode::execute;
 
     #[test]
     fn it_solves_part_2_example_1() {
